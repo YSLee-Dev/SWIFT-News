@@ -7,9 +7,28 @@
 
 import UIKit
 
+import SnapKit
+
 final class MainVC: UIViewController {
+    let tableView = MainTableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .black
+        self.attribute()
+        self.layout()
+    }
+}
+
+private extension MainVC {
+    func attribute() {
+        self.title = "NEWS"
+        self.view.backgroundColor = .systemBackground
+    }
+    
+    func layout() {
+        self.view.addSubview(self.tableView)
+        self.tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }

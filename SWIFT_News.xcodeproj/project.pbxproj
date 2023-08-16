@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		347C86162A8CDD92007BECDD /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C86152A8CDD92007BECDD /* MainTableView.swift */; };
+		347C86182A8CDE95007BECDD /* MainTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C86172A8CDE95007BECDD /* MainTableCell.swift */; };
+		347C861A2A8CE520007BECDD /* MainTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C86192A8CE520007BECDD /* MainTableHeaderView.swift */; };
+		347C861C2A8CEBE4007BECDD /* MainTableHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C861B2A8CEBE4007BECDD /* MainTableHeaderCell.swift */; };
 		34AA2B912A8CD241003E17BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA2B902A8CD241003E17BE /* AppDelegate.swift */; };
 		34AA2B932A8CD241003E17BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA2B922A8CD241003E17BE /* SceneDelegate.swift */; };
 		34AA2B9A2A8CD245003E17BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34AA2B992A8CD245003E17BE /* Assets.xcassets */; };
@@ -21,6 +25,10 @@
 
 /* Begin PBXFileReference section */
 		097FC4B5D30A4896D7AC579F /* Pods-SWIFT_News.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWIFT_News.debug.xcconfig"; path = "Target Support Files/Pods-SWIFT_News/Pods-SWIFT_News.debug.xcconfig"; sourceTree = "<group>"; };
+		347C86152A8CDD92007BECDD /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
+		347C86172A8CDE95007BECDD /* MainTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableCell.swift; sourceTree = "<group>"; };
+		347C86192A8CE520007BECDD /* MainTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableHeaderView.swift; sourceTree = "<group>"; };
+		347C861B2A8CEBE4007BECDD /* MainTableHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableHeaderCell.swift; sourceTree = "<group>"; };
 		34AA2B8D2A8CD241003E17BE /* SWIFT_News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWIFT_News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34AA2B902A8CD241003E17BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34AA2B922A8CD241003E17BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +56,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		347C86142A8CDD8A007BECDD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				347C86152A8CDD92007BECDD /* MainTableView.swift */,
+				347C86172A8CDE95007BECDD /* MainTableCell.swift */,
+				347C86192A8CE520007BECDD /* MainTableHeaderView.swift */,
+				347C861B2A8CEBE4007BECDD /* MainTableHeaderCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		34AA2B842A8CD241003E17BE = {
 			isa = PBXGroup;
 			children = (
@@ -80,10 +99,10 @@
 		34AA2BA42A8CD430003E17BE /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				34AA2B9E2A8CD245003E17BE /* Info.plist */,
 				34AA2B902A8CD241003E17BE /* AppDelegate.swift */,
 				34AA2B922A8CD241003E17BE /* SceneDelegate.swift */,
 				34AA2B9B2A8CD245003E17BE /* LaunchScreen.storyboard */,
-				34AA2B9E2A8CD245003E17BE /* Info.plist */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -133,6 +152,7 @@
 		34AA2BB22A8CD704003E17BE /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				347C86142A8CDD8A007BECDD /* View */,
 				34AA2BB72A8CD756003E17BE /* Coordinator */,
 				34AA2BB32A8CD719003E17BE /* ViewController */,
 			);
@@ -306,9 +326,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				347C861A2A8CE520007BECDD /* MainTableHeaderView.swift in Sources */,
 				34AA2BA92A8CD48B003E17BE /* AppCoordinator.swift in Sources */,
+				347C861C2A8CEBE4007BECDD /* MainTableHeaderCell.swift in Sources */,
 				34AA2BB92A8CD75F003E17BE /* MainCoordinator.swift in Sources */,
+				347C86182A8CDE95007BECDD /* MainTableCell.swift in Sources */,
 				34AA2BB62A8CD743003E17BE /* MainVC.swift in Sources */,
+				347C86162A8CDD92007BECDD /* MainTableView.swift in Sources */,
 				34AA2B912A8CD241003E17BE /* AppDelegate.swift in Sources */,
 				34AA2BAD2A8CD4AA003E17BE /* CoordinatorProtocol.swift in Sources */,
 				34AA2B932A8CD241003E17BE /* SceneDelegate.swift in Sources */,

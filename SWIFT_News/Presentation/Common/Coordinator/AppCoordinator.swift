@@ -14,11 +14,18 @@ class AppCoordinator: CoordinatorProtocol {
     
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.attribute()
     }
     
     func start() {
         let mainCooridnator = MainCoordinator(self.navigationController)
         mainCooridnator.start()
         self.childCoordinator.append(mainCooridnator)
+    }
+}
+
+private extension AppCoordinator {
+    func attribute() {
+        self.navigationController.navigationBar.prefersLargeTitles = true
     }
 }
