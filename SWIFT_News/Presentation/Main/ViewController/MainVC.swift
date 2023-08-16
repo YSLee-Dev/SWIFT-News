@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainVC.swift
 //  SWIFT_News
 //
 //  Created by 이윤수 on 2023/08/16.
@@ -7,13 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+final class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = .black
     }
-
-
 }
-
