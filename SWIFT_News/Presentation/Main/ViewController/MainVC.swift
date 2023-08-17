@@ -8,6 +8,7 @@
 import UIKit
 
 import SnapKit
+import RxSwift
 
 final class MainVC: UIViewController {
     let tableView = MainTableView()
