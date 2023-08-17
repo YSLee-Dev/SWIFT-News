@@ -9,16 +9,20 @@ import Foundation
 
 struct ReponseNewsDataDTO: Decodable {
     var items: [News]
+    var start: Int
     
-    func toDomain() -> [NewsData] {
-        items.map {
+    func toDomain() -> [NewsSection] {
+        [NewsSection(id: "\(start)", items:
+                        items.map {
             NewsData(
+                id: "\($0.title)\($0.pubDate) \(start)",
                 title: $0.title,
                 url: (URL(string: $0.link) ?? URL(string: "https://www.apple.com"))!,
                 description: $0.description,
                 date: $0.pubDate
             )
         }
+        )]
     }
 }
 

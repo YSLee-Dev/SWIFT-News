@@ -10,22 +10,17 @@ import UIKit
 import Then
 import SnapKit
 
-class MainTableHeaderView: UITableViewHeaderFooterView {
-    // 임시
-    var temp = ["1", "22", "333", "4444", "55555", "666666", "7777777", "88888888", "999999999", "1010101010"]
-    static let id = "MainTableHeaderView"
+class MainTableHeaderView: UIView {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.collectionViewLayout = self.collectionViewLayout()
         $0.register(MainTableHeaderCell.self, forCellWithReuseIdentifier: MainTableHeaderCell.id)
         $0.delegate = nil
-        // 임시
-        $0.dataSource = self
-        $0.backgroundColor = .label
+        $0.dataSource = nil
+        $0.backgroundColor = .lightGray
     }
     
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
-        self.attribute()
+    init() {
+        super.init(frame: .zero)
         self.layout()
     }
     
@@ -35,11 +30,8 @@ class MainTableHeaderView: UITableViewHeaderFooterView {
 }
 
 extension MainTableHeaderView {
-    private func attribute() {
-    }
-    
     private func layout() {
-        self.contentView.addSubview(self.collectionView)
+        self.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -65,18 +57,5 @@ extension MainTableHeaderView {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
         return UICollectionViewCompositionalLayout(section: section)
-    }
-}
-
-extension MainTableHeaderView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
-    }
-    
-    // 임시
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainTableHeaderCell.id, for: indexPath) as? MainTableHeaderCell else {return UICollectionViewCell()}
-        cell.mainLabel.text = temp[indexPath.row]
-        return cell
     }
 }

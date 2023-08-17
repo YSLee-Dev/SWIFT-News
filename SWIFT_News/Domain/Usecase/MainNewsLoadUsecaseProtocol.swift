@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol MainNewsLoadUsecaseProtocol {
-    func newsLoad(data: RequestNewsDataModel) -> Single<[NewsData]>
+    func newsLoad(data: RequestNewsDataModel) -> Single<[NewsSection]>
 }

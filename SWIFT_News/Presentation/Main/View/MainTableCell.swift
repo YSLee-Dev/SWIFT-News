@@ -65,6 +65,9 @@ extension MainTableCell {
         self.accessoryType = .disclosureIndicator
     }
     
-    func dataSet() {
+    func dataSet(_ data: NewsData) {
+        self.dataLabel.text = data.date
+        self.descriptionLabel.text = data.description
+        self.titleLabel.text = data.title
     }
 }

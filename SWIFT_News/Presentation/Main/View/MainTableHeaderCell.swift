@@ -13,6 +13,16 @@ import Then
 class MainTableHeaderCell: UICollectionViewCell {
     static let id = "MainTableHeaderCell"
     
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                self.mainLabel.backgroundColor = .gray.withAlphaComponent(0.8)
+            } else {
+                self.mainLabel.backgroundColor = .systemBackground
+            }
+        }
+    }
+    
     var mainLabel = UILabel().then {
         $0.layer.masksToBounds = true
         $0.textAlignment = .center

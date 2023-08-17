@@ -17,7 +17,8 @@ class MainCoordinator: CoordinatorProtocol {
     }
     
     func start() {
-        let mainVC = MainVC()
+        let viewModel = MainViewModel()
+        let mainVC = MainVC(viewModel: viewModel)
         self.navigationController.pushViewController(mainVC, animated: false)
     }
 }

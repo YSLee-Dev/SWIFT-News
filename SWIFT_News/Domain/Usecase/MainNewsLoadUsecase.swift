@@ -18,7 +18,7 @@ class MainNewsLoadUsecase: MainNewsLoadUsecaseProtocol {
         self.repository = repository
     }
     
-    func newsLoad(data: RequestNewsDataModel) -> Single<[NewsData]> {
+    func newsLoad(data: RequestNewsDataModel) -> Single<[NewsSection]> {
         self.repository.newNewsLoad(requestModel: data)
             .map {
                 $0.toDomain()

@@ -39,7 +39,7 @@ class MainNewsListLoadRepository: MainNewsListLoadRepositoryProtocol {
             return value
         }
         .asObservable()
-        .replaceNilWith(.init(items: []))
+        .replaceNilWith(.init(items: [], start: 0))
         .asSingle()
     }
 }
