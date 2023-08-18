@@ -49,16 +49,18 @@ private extension MainVC {
             .forEach {
                 self.view.addSubview($0)
             }
-        self.headerView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(50)
-            $0.top.equalTo(self.view.safeAreaLayoutGuide)
-        }
         
         self.tableView.snp.makeConstraints {
-            $0.top.equalTo(self.headerView.snp.bottom)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+        
+        self.headerView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(self.tableView)
+            $0.top.equalTo(self.tableView.safeAreaLayoutGuide.snp.bottom).offset(-50)
+        }
+        
     }
     
     func bind() {
@@ -94,6 +96,8 @@ private extension MainVC {
                 return cell
             })
         
+        self.headerView.collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .bottom)
+        
         output.newsList
             .drive(self.tableView.rx.items(dataSource: dataSource))
             .disposed(by: self.bag)
@@ -101,5 +105,6 @@ private extension MainVC {
         output.refreshStop
             .drive(self.tableView.refresh.rx.isRefreshing)
             .disposed(by: self.bag)
+        
     }
 }

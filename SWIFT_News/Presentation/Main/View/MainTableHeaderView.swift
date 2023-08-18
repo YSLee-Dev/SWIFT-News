@@ -22,6 +22,7 @@ class MainTableHeaderView: UIView {
     init() {
         super.init(frame: .zero)
         self.layout()
+        self.attirbute()
     }
     
     required init?(coder: NSCoder) {
@@ -29,15 +30,19 @@ class MainTableHeaderView: UIView {
     }
 }
 
-extension MainTableHeaderView {
-    private func layout() {
+private extension MainTableHeaderView {
+    func attirbute() {
+        self.backgroundColor = .lightGray
+    }
+    
+    func layout() {
         self.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.edges.equalTo(self.safeAreaLayoutGuide)
         }
     }
     
-    private func collectionViewLayout() -> UICollectionViewLayout {
+    func collectionViewLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.25), heightDimension: .fractionalHeight(1.0)
         )

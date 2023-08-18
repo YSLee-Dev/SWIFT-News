@@ -68,6 +68,7 @@ private extension MainViewModel {
             .disposed(by: self.bag)
         
         reload
+            .startWith("애플")
             .withUnretained(self)
             .flatMap { viewModel, category in
                 viewModel.loadUsecase.newsLoad(data: .init(start: viewModel.page, display: 30, query: category))
