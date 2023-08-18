@@ -18,6 +18,8 @@ class MainViewModel {
     private var page = 1
     let bag = DisposeBag()
     
+    weak var delegate: MainVCActionProtocol?
+    
     struct Input {
         let categoryTap: Observable<String>
         let newsTap: Observable<NewsData>
@@ -33,6 +35,8 @@ class MainViewModel {
     
     func transform(input: Input) -> Output {
         self.newsListLoad(input: input)
+        self.vcFlow(input: input)
+        
         return Output(
             newsList: self.newsList
                 .asDriver(onErrorDriveWith: .empty()),
@@ -95,6 +99,15 @@ private extension MainViewModel {
                 return dataList
             }
             .bind(to: self.newsList)
+            .disposed(by: self.bag)
+    }
+    
+    func vcFlow(input: Input) {
+        input.newsTap
+            .withUnretained(self)
+            .subscribe(onNext: { viewModel, data in
+                viewModel.delegate?.detailVCPush(data)
+            })
             .disposed(by: self.bag)
     }
 }

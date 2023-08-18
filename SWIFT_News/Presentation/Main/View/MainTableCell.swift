@@ -63,6 +63,7 @@ extension MainTableCell {
     
     func attribute() {
         self.accessoryType = .disclosureIndicator
+        self.selectionStyle = .none
     }
     
     func dataSet(_ data: NewsData) {

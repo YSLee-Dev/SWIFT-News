@@ -23,6 +23,12 @@
 		34793ED22A8E33830074DA80 /* NewsCategoty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34793ED12A8E33830074DA80 /* NewsCategoty.swift */; };
 		34793ED42A8E34C00074DA80 /* MainCategoryUsecaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34793ED32A8E34C00074DA80 /* MainCategoryUsecaseProtocol.swift */; };
 		34793ED62A8E381B0074DA80 /* NewsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34793ED52A8E381B0074DA80 /* NewsSection.swift */; };
+		34793EDC2A8F066E0074DA80 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34793EDB2A8F066E0074DA80 /* DetailVC.swift */; };
+		34793EDE2A8F06920074DA80 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34793EDD2A8F06920074DA80 /* DetailViewModel.swift */; };
+		34793EE02A8F06D60074DA80 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34793EDF2A8F06D60074DA80 /* DetailCoordinator.swift */; };
+		34793EE32A8F07430074DA80 /* MainVCActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34793EE22A8F07430074DA80 /* MainVCActionProtocol.swift */; };
+		34793EE62A8F087B0074DA80 /* DetailCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34793EE52A8F087B0074DA80 /* DetailCoordinatorProtocol.swift */; };
+		34793EE82A8F08890074DA80 /* DetailVCActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34793EE72A8F08890074DA80 /* DetailVCActionProtocol.swift */; };
 		347C86162A8CDD92007BECDD /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C86152A8CDD92007BECDD /* MainTableView.swift */; };
 		347C86182A8CDE95007BECDD /* MainTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C86172A8CDE95007BECDD /* MainTableCell.swift */; };
 		347C861A2A8CE520007BECDD /* MainTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C86192A8CE520007BECDD /* MainTableHeaderView.swift */; };
@@ -60,6 +66,12 @@
 		34793ED12A8E33830074DA80 /* NewsCategoty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCategoty.swift; sourceTree = "<group>"; };
 		34793ED32A8E34C00074DA80 /* MainCategoryUsecaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryUsecaseProtocol.swift; sourceTree = "<group>"; };
 		34793ED52A8E381B0074DA80 /* NewsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSection.swift; sourceTree = "<group>"; };
+		34793EDB2A8F066E0074DA80 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		34793EDD2A8F06920074DA80 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		34793EDF2A8F06D60074DA80 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
+		34793EE22A8F07430074DA80 /* MainVCActionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCActionProtocol.swift; sourceTree = "<group>"; };
+		34793EE52A8F087B0074DA80 /* DetailCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		34793EE72A8F08890074DA80 /* DetailVCActionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVCActionProtocol.swift; sourceTree = "<group>"; };
 		347C86152A8CDD92007BECDD /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
 		347C86172A8CDE95007BECDD /* MainTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableCell.swift; sourceTree = "<group>"; };
 		347C86192A8CE520007BECDD /* MainTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableHeaderView.swift; sourceTree = "<group>"; };
@@ -163,6 +175,58 @@
 				34793ECD2A8E31280074DA80 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		34793ED72A8F06490074DA80 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				34793EDA2A8F06600074DA80 /* ViewModel */,
+				34793ED92A8F065A0074DA80 /* Coordinator */,
+				34793ED82A8F06530074DA80 /* ViewController */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		34793ED82A8F06530074DA80 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				34793EDB2A8F066E0074DA80 /* DetailVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		34793ED92A8F065A0074DA80 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				34793EDF2A8F06D60074DA80 /* DetailCoordinator.swift */,
+				34793EE42A8F08670074DA80 /* Protocol */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		34793EDA2A8F06600074DA80 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				34793EDD2A8F06920074DA80 /* DetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		34793EE12A8F07320074DA80 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				34793EE22A8F07430074DA80 /* MainVCActionProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		34793EE42A8F08670074DA80 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				34793EE52A8F087B0074DA80 /* DetailCoordinatorProtocol.swift */,
+				34793EE72A8F08890074DA80 /* DetailVCActionProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		347C86142A8CDD8A007BECDD /* View */ = {
@@ -278,6 +342,7 @@
 		34AA2BA62A8CD46A003E17BE /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				34793ED72A8F06490074DA80 /* Detail */,
 				34AA2BB22A8CD704003E17BE /* Main */,
 				34AA2BA72A8CD47A003E17BE /* Common */,
 			);
@@ -332,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				34AA2BB82A8CD75F003E17BE /* MainCoordinator.swift */,
+				34793EE12A8F07320074DA80 /* Protocol */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -492,13 +558,17 @@
 				34793ED42A8E34C00074DA80 /* MainCategoryUsecaseProtocol.swift in Sources */,
 				34793EC82A8E2C7E0074DA80 /* MainNewsLoadUsecase.swift in Sources */,
 				34793ECB2A8E2D250074DA80 /* MainNewsLoadUsecaseProtocol.swift in Sources */,
+				34793EDC2A8F066E0074DA80 /* DetailVC.swift in Sources */,
 				347C861A2A8CE520007BECDD /* MainTableHeaderView.swift in Sources */,
 				34793ECE2A8E31280074DA80 /* MainViewModel.swift in Sources */,
 				34793ED02A8E33530074DA80 /* MainCategoryUsecase.swift in Sources */,
+				34793EE02A8F06D60074DA80 /* DetailCoordinator.swift in Sources */,
 				34793EB62A8E25850074DA80 /* MainNewsListLoadRepository.swift in Sources */,
 				34793EC02A8E27EF0074DA80 /* NewsData.swift in Sources */,
 				34793EC62A8E2AEE0074DA80 /* ServerQurey.swift in Sources */,
 				34793EB42A8E25440074DA80 /* MainNewsListLoadRepositoryProtocol.swift in Sources */,
+				34793EDE2A8F06920074DA80 /* DetailViewModel.swift in Sources */,
+				34793EE32A8F07430074DA80 /* MainVCActionProtocol.swift in Sources */,
 				34AA2BA92A8CD48B003E17BE /* AppCoordinator.swift in Sources */,
 				34793EBB2A8E26020074DA80 /* RequestNewsDataModel.swift in Sources */,
 				347C861C2A8CEBE4007BECDD /* MainTableHeaderCell.swift in Sources */,
@@ -512,9 +582,11 @@
 				347C86162A8CDD92007BECDD /* MainTableView.swift in Sources */,
 				34793ED62A8E381B0074DA80 /* NewsSection.swift in Sources */,
 				34AA2B912A8CD241003E17BE /* AppDelegate.swift in Sources */,
+				34793EE62A8F087B0074DA80 /* DetailCoordinatorProtocol.swift in Sources */,
 				34793EC42A8E29800074DA80 /* ServerURL.swift in Sources */,
 				34AA2BAD2A8CD4AA003E17BE /* CoordinatorProtocol.swift in Sources */,
 				34AA2B932A8CD241003E17BE /* SceneDelegate.swift in Sources */,
+				34793EE82A8F08890074DA80 /* DetailVCActionProtocol.swift in Sources */,
 				34793EB22A8E24720074DA80 /* NetworkServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

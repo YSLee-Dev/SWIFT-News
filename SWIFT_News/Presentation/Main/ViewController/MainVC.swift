@@ -66,6 +66,7 @@ private extension MainVC {
     func bind() {
         let input = MainViewModel.Input(
             categoryTap: self.headerView.collectionView.rx.modelSelected(String.self)
+                .startWith("애플")
                 .asObservable(),
             newsTap: self.tableView.rx.modelSelected(NewsData.self)
                 .asObservable(),
@@ -96,7 +97,11 @@ private extension MainVC {
                 return cell
             })
         
-        self.headerView.collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .bottom)
+        self.headerView.collectionView.selectItem(
+            at: IndexPath(row: 0, section: 0),
+            animated: true,
+            scrollPosition: .bottom
+        )
         
         output.newsList
             .drive(self.tableView.rx.items(dataSource: dataSource))
