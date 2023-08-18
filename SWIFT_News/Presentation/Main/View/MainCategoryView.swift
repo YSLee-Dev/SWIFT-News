@@ -1,5 +1,5 @@
 //
-//  MainTableHeaderView.swift
+//  MainCategoryView.swift
 //  SWIFT_News
 //
 //  Created by 이윤수 on 2023/08/16.
@@ -10,13 +10,13 @@ import UIKit
 import Then
 import SnapKit
 
-class MainTableHeaderView: UIView {
+class MainCategoryView: UIView {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.collectionViewLayout = self.collectionViewLayout()
-        $0.register(MainTableHeaderCell.self, forCellWithReuseIdentifier: MainTableHeaderCell.id)
+        $0.register(MainCategoryViewCell.self, forCellWithReuseIdentifier: MainCategoryViewCell.id)
         $0.delegate = nil
         $0.dataSource = nil
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = .systemGroupedBackground
     }
     
     init() {
@@ -30,9 +30,9 @@ class MainTableHeaderView: UIView {
     }
 }
 
-private extension MainTableHeaderView {
+private extension MainCategoryView {
     func attirbute() {
-        self.backgroundColor = .lightGray
+        self.backgroundColor = .systemGroupedBackground
     }
     
     func layout() {

@@ -1,5 +1,5 @@
 //
-//  MainTableHeaderCell.swift
+//  MainTableCategoryCell.swift
 //  SWIFT_News
 //
 //  Created by 이윤수 on 2023/08/16.
@@ -10,15 +10,17 @@ import UIKit
 import SnapKit
 import Then
 
-class MainTableHeaderCell: UICollectionViewCell {
-    static let id = "MainTableHeaderCell"
+class MainCategoryViewCell: UICollectionViewCell {
+    static let id = "MainCategoryViewCell"
     
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                self.mainLabel.backgroundColor = .gray.withAlphaComponent(0.8)
+                self.mainLabel.backgroundColor = .systemGray2
+                self.mainLabel.textColor = .systemBackground
             } else {
                 self.mainLabel.backgroundColor = .systemBackground
+                self.mainLabel.textColor = .label
             }
         }
     }
@@ -42,7 +44,7 @@ class MainTableHeaderCell: UICollectionViewCell {
     }
 }
 
-extension MainTableHeaderCell {
+extension MainCategoryViewCell {
     private func layout() {
         self.contentView.addSubview(self.mainLabel)
         self.mainLabel.snp.makeConstraints {

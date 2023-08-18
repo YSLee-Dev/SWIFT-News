@@ -8,14 +8,17 @@
 import UIKit
 
 import SnapKit
+import Then
 
 import RxSwift
 import RxCocoa
 import RxDataSources
 
 final class MainVC: UIViewController {
-    let tableView = MainTableView()
-    let headerView = MainTableHeaderView()
+    lazy var tableView = MainTableView().then {
+        $0.delegate = self
+    }
+    let categoryView = MainCategoryView()
     let viewModel: MainViewModel
     let bag = DisposeBag()
     
@@ -45,27 +48,26 @@ private extension MainVC {
     }
     
     func layout() {
-        [self.tableView, self.headerView]
+        [self.tableView, self.categoryView]
             .forEach {
                 self.view.addSubview($0)
             }
         
         self.tableView.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         
-        self.headerView.snp.makeConstraints {
+        self.categoryView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(self.tableView)
-            $0.top.equalTo(self.tableView.safeAreaLayoutGuide.snp.bottom).offset(-50)
+            $0.bottom.equalToSuperview()
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-50)
         }
         
     }
     
     func bind() {
         let input = MainViewModel.Input(
-            categoryTap: self.headerView.collectionView.rx.modelSelected(String.self)
+            categoryTap: self.categoryView.collectionView.rx.modelSelected(String.self)
                 .startWith("애플")
                 .asObservable(),
             newsTap: self.tableView.rx.modelSelected(NewsData.self)
@@ -78,10 +80,10 @@ private extension MainVC {
         
         let output = viewModel.transform(input: input)
         output.categoryList
-            .drive(self.headerView.collectionView.rx.items) { collectionView, row, data in
+            .drive(self.categoryView.collectionView.rx.items) { collectionView, row, data in
                 guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: MainTableHeaderCell.id, for: IndexPath(row: row, section: 0)
-                ) as? MainTableHeaderCell else {return UICollectionViewCell()}
+                    withReuseIdentifier: MainCategoryViewCell.id, for: IndexPath(row: row, section: 0)
+                ) as? MainCategoryViewCell else {return UICollectionViewCell()}
                 cell.mainLabel.text = data
                 return cell
             }
@@ -97,7 +99,7 @@ private extension MainVC {
                 return cell
             })
         
-        self.headerView.collectionView.selectItem(
+        self.categoryView.collectionView.selectItem(
             at: IndexPath(row: 0, section: 0),
             animated: true,
             scrollPosition: .bottom
@@ -110,6 +112,24 @@ private extension MainVC {
         output.refreshStop
             .drive(self.tableView.refresh.rx.isRefreshing)
             .disposed(by: self.bag)
-        
+    }
+    
+    func isCategoryViewHidden(_ hidden: Bool) {
+        UIView.animate(withDuration: 0.2, animations: {
+            if hidden {
+                self.categoryView.transform = CGAffineTransform(translationX: 0, y: 100)
+            } else {
+                self.categoryView.transform = .identity
+            }
+        })
+    }
+}
+
+extension MainVC: UITableViewDelegate {
+    func scrollViewWillEndDragging(
+        _ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>
+    ) {
+        guard velocity.y != 0 else {return}
+        self.isCategoryViewHidden(velocity.y > 0)
     }
 }
