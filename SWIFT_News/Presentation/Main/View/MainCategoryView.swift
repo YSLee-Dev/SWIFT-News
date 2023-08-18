@@ -12,6 +12,7 @@ import SnapKit
 
 class MainCategoryView: UIView {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.alwaysBounceVertical = false
         $0.collectionViewLayout = self.collectionViewLayout()
         $0.register(MainCategoryViewCell.self, forCellWithReuseIdentifier: MainCategoryViewCell.id)
         $0.delegate = nil
@@ -50,11 +51,11 @@ private extension MainCategoryView {
         item.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
         
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)
+            widthDimension: .fractionalWidth(0.9), heightDimension: .fractionalHeight(1.0)
         )
         var group: NSCollectionLayoutGroup!
         if #available(iOS 16.0, *) {
-           group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 4)
+            group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 4)
         } else {
             group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 4)
         }
