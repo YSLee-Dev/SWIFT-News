@@ -35,7 +35,7 @@ class DetailViewModel {
                 .asDriver(onErrorDriveWith: .empty()),
             title: self.newsData
                 .filterNil()
-                .map {$0.title }
+                .map {"\(String($0.title.prefix(17))) ..."}
                 .asDriver(onErrorDriveWith: .empty())
         )
     }
