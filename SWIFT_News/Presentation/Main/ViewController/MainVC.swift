@@ -13,6 +13,7 @@ import Then
 import RxSwift
 import RxCocoa
 import RxDataSources
+import RxOptional
 
 final class MainVC: UIViewController {
     lazy var tableView = MainTableView().then {
@@ -21,6 +22,9 @@ final class MainVC: UIViewController {
     let categoryView = MainCategoryView()
     let viewModel: MainViewModel
     let bag = DisposeBag()
+    var tfBag = DisposeBag()
+    
+    let searchText = PublishSubject<String>()
     
     init(
         viewModel: MainViewModel
@@ -45,6 +49,52 @@ private extension MainVC {
     func attribute() {
         self.title = "NEWS"
         self.view.backgroundColor = .systemBackground
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillShow(_:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillHide(_:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    @objc
+    private func keyboardWillShow(_ sender: Notification) {
+        let userInfo: NSDictionary = sender.userInfo! as NSDictionary
+        let keyboardFrame: NSValue = userInfo.value(
+            forKey: UIResponder.keyboardFrameEndUserInfoKey
+        ) as? NSValue ?? .init()
+        
+        let keyboardRectangle = keyboardFrame.cgRectValue
+        let keyboardHeight = keyboardRectangle.height - 15
+        
+        self.categoryView.snp.remakeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(keyboardHeight + 10)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-25 + -keyboardHeight)
+        }
+        
+        UIView.animate(withDuration: 0.25) {[weak self] in
+            self?.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc
+    private func keyboardWillHide(_ sender: Notification) {
+        self.categoryView.snp.remakeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-50)
+        }
+        UIView.animate(withDuration: 0.25) {[weak self] in
+            self?.view.layoutIfNeeded()
+        }
     }
     
     func layout() {
@@ -75,17 +125,36 @@ private extension MainVC {
             refresh: self.tableView.refresh.rx.controlEvent(.valueChanged)
                 .asObservable(),
             scroll: self.tableView.rx.willDisplayCell.map {$0.indexPath}
+                .asObservable(),
+            search: self.searchText
                 .asObservable()
         )
         
         let output = viewModel.transform(input: input)
         output.categoryList
-            .drive(self.categoryView.collectionView.rx.items) { collectionView, row, data in
-                guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: MainCategoryViewCell.id, for: IndexPath(row: row, section: 0)
-                ) as? MainCategoryViewCell else {return UICollectionViewCell()}
-                cell.mainLabel.text = data
-                return cell
+            .drive(self.categoryView.collectionView.rx.items) { [weak self] collectionView, row, data in
+                if row != 8 {
+                    guard let cell = collectionView.dequeueReusableCell(
+                        withReuseIdentifier: MainCategoryViewCell.id, for: IndexPath(row: row, section: 0)
+                    ) as? MainCategoryViewCell else {return UICollectionViewCell()}
+                    cell.mainLabel.text = data
+                    return cell
+                } else {
+                    guard let cell = collectionView.dequeueReusableCell(
+                        withReuseIdentifier: MainTableCategorySearchCell.id, for: IndexPath(row: row, section: 0)
+                    ) as? MainTableCategorySearchCell else {return UICollectionViewCell()}
+                    
+                    guard let self = self else {return UICollectionViewCell()}
+                    self.tfBag = DisposeBag()
+                    cell.textField.rx.controlEvent(.editingDidEnd)
+                        .withLatestFrom(cell.textField.rx.text)
+                        .filterNil()
+                        .bind(to: self.searchText)
+                        .disposed(by: self.tfBag)
+                        
+                    return cell
+                }
+               
             }
             .disposed(by: self.bag)
         

@@ -16,4 +16,5 @@ enum NewsCategoty: String, CaseIterable {
     case realEstate = "부동산"
     case stock = "주식"
     case global = "세계"
+    case search = "검색"
 }

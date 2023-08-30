@@ -46,6 +46,7 @@
 		34AA2BB62A8CD743003E17BE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA2BB52A8CD743003E17BE /* MainVC.swift */; };
 		34AA2BB92A8CD75F003E17BE /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA2BB82A8CD75F003E17BE /* MainCoordinator.swift */; };
 		3D96E90CCEF2FB261D0CDCD0 /* Pods_SWIFT_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC5DD2F7C16D4AED72BA3D8 /* Pods_SWIFT_News.framework */; };
+		B6B4D10A2A9F8456001697F7 /* MainTableCategorySearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4D1092A9F8456001697F7 /* MainTableCategorySearchCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		34AA2BB82A8CD75F003E17BE /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		3AC5DD2F7C16D4AED72BA3D8 /* Pods_SWIFT_News.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWIFT_News.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E870C082D8F7FE0B266A8F1 /* Pods-SWIFT_News.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWIFT_News.release.xcconfig"; path = "Target Support Files/Pods-SWIFT_News/Pods-SWIFT_News.release.xcconfig"; sourceTree = "<group>"; };
+		B6B4D1092A9F8456001697F7 /* MainTableCategorySearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableCategorySearchCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 			children = (
 				347C86152A8CDD92007BECDD /* MainTableView.swift */,
 				347C86172A8CDE95007BECDD /* MainTableCell.swift */,
+				B6B4D1092A9F8456001697F7 /* MainTableCategorySearchCell.swift */,
 				347C86192A8CE520007BECDD /* MainCategoryView.swift */,
 				347C861B2A8CEBE4007BECDD /* MainCategoryViewCell.swift */,
 			);
@@ -588,6 +591,7 @@
 				34AA2B932A8CD241003E17BE /* SceneDelegate.swift in Sources */,
 				34793EE82A8F08890074DA80 /* DetailVCActionProtocol.swift in Sources */,
 				34793EB22A8E24720074DA80 /* NetworkServiceProtocol.swift in Sources */,
+				B6B4D10A2A9F8456001697F7 /* MainTableCategorySearchCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

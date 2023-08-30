@@ -15,6 +15,7 @@ class MainCategoryView: UIView {
         $0.alwaysBounceVertical = false
         $0.collectionViewLayout = self.collectionViewLayout()
         $0.register(MainCategoryViewCell.self, forCellWithReuseIdentifier: MainCategoryViewCell.id)
+        $0.register(MainTableCategorySearchCell.self, forCellWithReuseIdentifier: MainTableCategorySearchCell.id)
         $0.delegate = nil
         $0.dataSource = nil
         $0.backgroundColor = .systemGroupedBackground

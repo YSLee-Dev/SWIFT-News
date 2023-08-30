@@ -25,6 +25,7 @@ class MainViewModel {
         let newsTap: Observable<NewsData>
         let refresh: Observable<Void>
         let scroll: Observable<IndexPath>
+        let search: Observable<String>
     }
     
     struct Output {
@@ -60,7 +61,8 @@ private extension MainViewModel {
     func newsListLoad(input: Input) {
         let reload = Observable.merge(
             input.categoryTap,
-            input.refresh.withLatestFrom(input.categoryTap)
+            input.refresh.withLatestFrom(input.categoryTap),
+            input.search
         )
             .share()
         
