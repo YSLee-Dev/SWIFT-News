@@ -174,6 +174,10 @@ private extension MainVC {
             scrollPosition: .bottom
         )
         
+        self.searchText.map{_ in Void()}
+            .bind(to: self.rx.tappedCancel)
+            .disposed(by: self.bag)
+        
         output.newsList
             .drive(self.tableView.rx.items(dataSource: dataSource))
             .disposed(by: self.bag)
@@ -200,5 +204,17 @@ extension MainVC: UITableViewDelegate {
     ) {
         guard velocity.y != 0 else {return}
         self.isCategoryViewHidden(velocity.y > 0)
+    }
+}
+
+extension Reactive where Base: MainVC {
+    var tappedCancel: Binder<Void> {
+        return Binder(base) { base, _ in
+            base.categoryView.collectionView.selectItem(
+                at: IndexPath(row: 8, section: 0),
+                animated: true,
+                scrollPosition: .bottom
+            )
+        }
     }
 }
