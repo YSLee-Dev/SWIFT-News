@@ -65,7 +65,7 @@ private extension MainVC {
     }
     
     @objc
-    private func keyboardWillShow(_ sender: Notification) {
+    func keyboardWillShow(_ sender: Notification) {
         let userInfo: NSDictionary = sender.userInfo! as NSDictionary
         let keyboardFrame: NSValue = userInfo.value(
             forKey: UIResponder.keyboardFrameEndUserInfoKey
@@ -86,7 +86,7 @@ private extension MainVC {
     }
     
     @objc
-    private func keyboardWillHide(_ sender: Notification) {
+    func keyboardWillHide(_ sender: Notification) {
         self.categoryView.snp.remakeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
@@ -174,7 +174,7 @@ private extension MainVC {
             scrollPosition: .bottom
         )
         
-        self.searchText.map{_ in Void()}
+        self.searchText.map {_ in Void()}
             .bind(to: self.rx.tappedCancel)
             .disposed(by: self.bag)
         

@@ -64,6 +64,7 @@ private extension MainViewModel {
             input.refresh.withLatestFrom(input.categoryTap),
             input.search
         )
+            .distinctUntilChanged()
             .share()
         
         reload
