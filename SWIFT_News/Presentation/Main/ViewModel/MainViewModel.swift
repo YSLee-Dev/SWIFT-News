@@ -62,7 +62,7 @@ private extension MainViewModel {
         let reload = Observable.merge(
             input.categoryTap,
             input.refresh.withLatestFrom(input.categoryTap),
-            input.search
+            input.search.filter {$0 != ""}
         )
             .distinctUntilChanged()
             .share()
