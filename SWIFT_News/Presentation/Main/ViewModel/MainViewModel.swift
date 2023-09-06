@@ -60,11 +60,10 @@ class MainViewModel {
 private extension MainViewModel {
     func newsListLoad(input: Input) {
         let reload = Observable.merge(
-            input.categoryTap,
+            input.categoryTap.distinctUntilChanged(),
             input.refresh.withLatestFrom(input.categoryTap),
             input.search.filter {$0 != ""}
         )
-            .distinctUntilChanged()
             .share()
         
         reload
