@@ -27,5 +27,10 @@ class AppCoordinator: CoordinatorProtocol {
 private extension AppCoordinator {
     func attribute() {
         self.navigationController.navigationBar.prefersLargeTitles = true
+        
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.backgroundColor = .systemBackground
+        self.navigationController.navigationBar.standardAppearance = navigationBarAppearance
+        self.navigationController.navigationBar.scrollEdgeAppearance = navigationBarAppearance
     }
 }
