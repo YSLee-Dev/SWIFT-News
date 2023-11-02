@@ -7,8 +7,11 @@
 
 import UIKit
 
+import Swinject
+
 class AppCoordinator: CoordinatorProtocol {
     var navigationController: UINavigationController
+    var container: Container?
     
     var childCoordinator: [CoordinatorProtocol] = []
     
@@ -19,6 +22,9 @@ class AppCoordinator: CoordinatorProtocol {
     
     func start() {
         let mainCooridnator = MainCoordinator(self.navigationController)
+        mainCooridnator.mainViewModel = container!.resolve(MainViewModel.self)
+        mainCooridnator.mainVC = container!.resolve(MainVC.self)
+        
         mainCooridnator.start()
         self.childCoordinator.append(mainCooridnator)
     }

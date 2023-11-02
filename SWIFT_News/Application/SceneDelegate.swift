@@ -7,9 +7,12 @@
 
 import UIKit
 
+import Swinject
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    var appCoordinator: AppCoordinator?
+    let container = Container()
     var window: UIWindow?
+    var appCoordinator: AppCoordinator!
 
     func scene(
         _ scene: UIScene,
@@ -23,7 +26,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
         
-        self.appCoordinator = AppCoordinator(navigationController)
-        self.appCoordinator?.start()
+        self.container.register(AppCoordinator.self) { _ in AppCoordinator(navigationController)}
+        [DataAssembly(), DomainAssembly(), MainAssembly()].forEach { [weak self] value in
+            let type = value as? Assembly
+            type!.assemble(container: self?.container ?? Container())
+        }
+        
+        self.appCoordinator = self.container.resolve(AppCoordinator.self)!
+        self.appCoordinator.container = self.container
+        self.appCoordinator.start()
     }
 }

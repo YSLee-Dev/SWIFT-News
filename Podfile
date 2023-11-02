@@ -14,5 +14,6 @@ pod 'RxOptional'
 pod 'Then'
 pod 'SnapKit'
 pod 'SwiftLint'
+pod 'Swinject'
 
 end

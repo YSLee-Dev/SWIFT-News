@@ -36,6 +36,10 @@
 		347C86242A8E1EEC007BECDD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C86232A8E1EEC007BECDD /* NetworkService.swift */; };
 		347C86272A8E1F0E007BECDD /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C86262A8E1F0E007BECDD /* URLSessionProtocol.swift */; };
 		347C86292A8E1F4B007BECDD /* URLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C86282A8E1F4B007BECDD /* URLSession+.swift */; };
+		34A19D5C2AF3A779000FA903 /* DataAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A19D5B2AF3A779000FA903 /* DataAssembly.swift */; };
+		34A19D5E2AF3A867000FA903 /* DomainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A19D5D2AF3A867000FA903 /* DomainAssembly.swift */; };
+		34A19D622AF3A9AC000FA903 /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A19D612AF3A9AC000FA903 /* MainAssembly.swift */; };
+		34A19D642AF3B158000FA903 /* MainCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A19D632AF3B158000FA903 /* MainCoordinatorProtocol.swift */; };
 		34AA2B912A8CD241003E17BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA2B902A8CD241003E17BE /* AppDelegate.swift */; };
 		34AA2B932A8CD241003E17BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA2B922A8CD241003E17BE /* SceneDelegate.swift */; };
 		34AA2B9A2A8CD245003E17BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34AA2B992A8CD245003E17BE /* Assets.xcassets */; };
@@ -80,6 +84,10 @@
 		347C86232A8E1EEC007BECDD /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		347C86262A8E1F0E007BECDD /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		347C86282A8E1F4B007BECDD /* URLSession+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+.swift"; sourceTree = "<group>"; };
+		34A19D5B2AF3A779000FA903 /* DataAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAssembly.swift; sourceTree = "<group>"; };
+		34A19D5D2AF3A867000FA903 /* DomainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainAssembly.swift; sourceTree = "<group>"; };
+		34A19D612AF3A9AC000FA903 /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
+		34A19D632AF3B158000FA903 /* MainCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		34AA2B8D2A8CD241003E17BE /* SWIFT_News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWIFT_News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34AA2B902A8CD241003E17BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34AA2B922A8CD241003E17BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -218,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				34793EE22A8F07430074DA80 /* MainVCActionProtocol.swift */,
+				34A19D632AF3B158000FA903 /* MainCoordinatorProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -292,6 +301,16 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		34A19D5A2AF3A726000FA903 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				34A19D5B2AF3A779000FA903 /* DataAssembly.swift */,
+				34A19D5D2AF3A867000FA903 /* DomainAssembly.swift */,
+				34A19D612AF3A9AC000FA903 /* MainAssembly.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		34AA2B842A8CD241003E17BE = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +374,7 @@
 		34AA2BA72A8CD47A003E17BE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				34A19D5A2AF3A726000FA903 /* DI */,
 				34AA2BAA2A8CD48F003E17BE /* Coordinator */,
 			);
 			path = Common;
@@ -581,6 +601,8 @@
 				34AA2BB62A8CD743003E17BE /* MainVC.swift in Sources */,
 				34793EB92A8E25D30074DA80 /* ReponseNewsDataDTO.swift in Sources */,
 				34793EB02A8E224E0074DA80 /* RequestToken.swift in Sources */,
+				34A19D622AF3A9AC000FA903 /* MainAssembly.swift in Sources */,
+				34A19D5E2AF3A867000FA903 /* DomainAssembly.swift in Sources */,
 				34793ED22A8E33830074DA80 /* NewsCategoty.swift in Sources */,
 				347C86162A8CDD92007BECDD /* MainTableView.swift in Sources */,
 				34793ED62A8E381B0074DA80 /* NewsSection.swift in Sources */,
@@ -589,7 +611,9 @@
 				34793EC42A8E29800074DA80 /* ServerURL.swift in Sources */,
 				34AA2BAD2A8CD4AA003E17BE /* CoordinatorProtocol.swift in Sources */,
 				34AA2B932A8CD241003E17BE /* SceneDelegate.swift in Sources */,
+				34A19D642AF3B158000FA903 /* MainCoordinatorProtocol.swift in Sources */,
 				34793EE82A8F08890074DA80 /* DetailVCActionProtocol.swift in Sources */,
+				34A19D5C2AF3A779000FA903 /* DataAssembly.swift in Sources */,
 				34793EB22A8E24720074DA80 /* NetworkServiceProtocol.swift in Sources */,
 				B6B4D10A2A9F8456001697F7 /* MainTableCategorySearchCell.swift in Sources */,
 			);

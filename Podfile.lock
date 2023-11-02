@@ -21,6 +21,7 @@ PODS:
   - RxSwift (6.5.0)
   - SnapKit (5.6.0)
   - SwiftLint (0.52.2)
+  - Swinject (2.8.3)
   - Then (3.0.0)
 
 DEPENDENCIES:
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - RxSwift
   - SnapKit
   - SwiftLint
+  - Swinject
   - Then
 
 SPEC REPOS:
@@ -45,6 +47,7 @@ SPEC REPOS:
     - RxSwift
     - SnapKit
     - SwiftLint
+    - Swinject
     - Then
 
 SPEC CHECKSUMS:
@@ -58,8 +61,9 @@ SPEC CHECKSUMS:
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftLint: 1ac76dac888ca05cb0cf24d0c85887ec1209961d
+  Swinject: 893c9a543000ac2f10ee4cbaf0933c6992c935d5
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 95c1a5579e162dffb0072c3c424c521b43c78890
+PODFILE CHECKSUM: 3cc424f168d9d90cf283a1ce07a7bc58ea950589
 
 COCOAPODS: 1.11.3
