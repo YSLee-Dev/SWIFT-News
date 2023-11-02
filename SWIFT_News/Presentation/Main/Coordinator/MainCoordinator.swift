@@ -7,8 +7,12 @@
 
 import UIKit
 
+import Swinject
+
 class MainCoordinator: CoordinatorProtocol {
     var navigationController: UINavigationController
+    var mainVC: MainVC!
+    var container: Container!
     
     var childCoordinator: [CoordinatorProtocol] = [] {
         didSet {
@@ -16,26 +20,28 @@ class MainCoordinator: CoordinatorProtocol {
         }
     }
     
+    deinit {
+        print("MainCoordinator DEINIT")
+    }
+    
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        let viewModel = MainViewModel()
-        viewModel.delegate = self
-        let mainVC = MainVC(viewModel: viewModel)
-        
-        self.navigationController.pushViewController(mainVC, animated: false)
+        self.navigationController.pushViewController(self.mainVC, animated: false)
+        self.mainVC.viewModel.delegate = self
     }
 }
 
 extension MainCoordinator: MainVCActionProtocol {
     func detailVCPush(_ data: NewsData) {
         let detailCoordinator = DetailCoordinator(self.navigationController)
+        detailCoordinator.detailVC = self.container.resolve(DetailVC.self)!
         detailCoordinator.newsData = data
         detailCoordinator.start()
         detailCoordinator.coordinatorDelegate = self
-        
+
         self.childCoordinator.append(detailCoordinator)
     }
 }

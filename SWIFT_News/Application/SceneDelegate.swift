@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let container = Container()
     var window: UIWindow?
     var appCoordinator: AppCoordinator!
-
+    
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
@@ -27,7 +27,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.makeKeyAndVisible()
         
         self.container.register(AppCoordinator.self) { _ in AppCoordinator(navigationController)}
-        [DataAssembly(), DomainAssembly(), MainAssembly()].forEach { [weak self] value in
+        [
+            DataAssembly(),
+            DomainAssembly(),
+            MainAssembly(),
+            DetailAssembly()
+        ].forEach { [weak self] value in
             let type = value as? Assembly
             type!.assemble(container: self?.container ?? Container())
         }

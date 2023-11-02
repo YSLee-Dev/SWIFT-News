@@ -11,7 +11,7 @@ import Swinject
 
 class AppCoordinator: CoordinatorProtocol {
     var navigationController: UINavigationController
-    var container: Container?
+    var container: Container!
     
     var childCoordinator: [CoordinatorProtocol] = []
     
@@ -22,10 +22,11 @@ class AppCoordinator: CoordinatorProtocol {
     
     func start() {
         let mainCooridnator = MainCoordinator(self.navigationController)
-        mainCooridnator.mainViewModel = container!.resolve(MainViewModel.self)
-        mainCooridnator.mainVC = container!.resolve(MainVC.self)
+        let mainVC = container.resolve(MainVC.self)!
+        mainCooridnator.mainVC = mainVC
         
         mainCooridnator.start()
+        mainCooridnator.container = self.container
         self.childCoordinator.append(mainCooridnator)
     }
 }

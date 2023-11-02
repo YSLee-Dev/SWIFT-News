@@ -9,28 +9,30 @@ import UIKit
 
 class DetailCoordinator: CoordinatorProtocol {
     var navigationController: UINavigationController
-    
     var childCoordinator: [CoordinatorProtocol] = []
     
     weak var coordinatorDelegate: DetailCoordinatorProtocol?
+    
+    var detailVC: DetailVC!
     var newsData: NewsData?
     
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
+    deinit {
+        print("DetailCoordinator DEINIT")
+    }
+    
     func start() {
-        let viewModel = DetailViewModel()
-        viewModel.delegate = self
-        viewModel.newsData.onNext(
+        self.detailVC.viewModel.delegate = self
+        self.detailVC.viewModel.newsData.onNext(
             newsData ?? .init(
                 id: "NONE", title: "정보없음", url: URL(string: "https://www.apple.com")!, description: "정보없음", date: ""
             )
         )
         
-        let detailVC = DetailVC(viewModel: viewModel)
-        
-        self.navigationController.pushViewController(detailVC, animated: true)
+        self.navigationController.pushViewController(self.detailVC, animated: true)
     }
 }
 

@@ -38,6 +38,10 @@ class DetailVC: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    deinit {
+        print("DetailVC DEINIT")
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
