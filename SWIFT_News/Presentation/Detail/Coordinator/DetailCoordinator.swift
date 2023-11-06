@@ -16,7 +16,9 @@ class DetailCoordinator: CoordinatorProtocol {
     var detailVC: DetailVC!
     var newsData: NewsData?
     
-    required init(_ navigationController: UINavigationController) {
+    init(
+        _ navigationController: UINavigationController
+    ) {
         self.navigationController = navigationController
     }
     

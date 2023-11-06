@@ -7,10 +7,11 @@
 
 import UIKit
 
+import Swinject
+
 protocol CoordinatorProtocol: AnyObject {
     var navigationController: UINavigationController {get}
     var childCoordinator: [CoordinatorProtocol] {get}
     
-    init(_ navigationController: UINavigationController)
     func start()
 }

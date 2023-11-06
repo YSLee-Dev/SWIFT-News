@@ -12,7 +12,7 @@ import Swinject
 class MainCoordinator: CoordinatorProtocol {
     var navigationController: UINavigationController
     var mainVC: MainVC!
-    var container: Container!
+    var container: Container
     
     var childCoordinator: [CoordinatorProtocol] = [] {
         didSet {
@@ -24,8 +24,12 @@ class MainCoordinator: CoordinatorProtocol {
         print("MainCoordinator DEINIT")
     }
     
-    required init(_ navigationController: UINavigationController) {
+    init(
+        _ navigationController: UINavigationController,
+        _ container: Swinject.Container
+    ) {
         self.navigationController = navigationController
+        self.container = container
     }
     
     func start() {
