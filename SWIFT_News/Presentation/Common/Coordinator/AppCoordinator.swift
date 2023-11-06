@@ -11,16 +11,14 @@ import Swinject
 
 class AppCoordinator: CoordinatorProtocol {
     var navigationController: UINavigationController
-    var container: Container
+    var container: Container!
     
     var childCoordinator: [CoordinatorProtocol] = []
     
     init(
-        _ navigationController: UINavigationController,
-        _ container: Swinject.Container
+        _ navigationController: UINavigationController
     ) {
         self.navigationController = navigationController
-        self.container = container
         self.attribute()
     }
     
